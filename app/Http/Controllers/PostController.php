@@ -76,5 +76,11 @@ class PostController extends Controller
     //   return response()->json($response, 200);
     // }
 
-    
+    public function postDetails($id){
+      $post = Post::find($id);
+
+      return response()->json($post,200);
+    }
+
+
 }
