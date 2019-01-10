@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-  <div class="text-right" style="margin-bottom:30px">
+  <!-- <div class="text-right" style="margin-bottom:30px">
     <a class="btn btn-primary" href="{{route('create')}}">Tambah</a>
-  </div>
+  </div> -->
   @foreach($posts as $post)
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -24,6 +24,10 @@
     </div>
     <br>
     @endforeach
-
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+      {{$posts->links()}}
+      </div>
+    </div>
 </div>
 @endsection

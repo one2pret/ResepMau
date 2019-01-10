@@ -22,4 +22,5 @@ Route::get('/home/post', 'HomeController@create')->name('create');
 Route::post('/home/post', 'HomeController@store')->name('store');
 Route::get('/home/update/{post}','HomeController@edit')->name('edit');
 Route::patch('/home/update/{post}','HomeController@update')->name('update');
-Route::get('/home/delete/{post}','HomeController@delete')->name('delete');
+Route::get('/home/delete/{post}','HomeController@destroy')->name('delete');
+Route::get('/home/user','HomeController@postUser')->name('post.user');

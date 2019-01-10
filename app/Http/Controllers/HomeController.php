@@ -48,7 +48,7 @@ class HomeController extends Controller
         'user_id' => Auth::user()->id,
       ]);
 
-      return redirect()->route('home');
+      return redirect()->route('post.user')->with('message','Resep berhasil ditambah');
     }
 
     public function edit($id){
@@ -64,7 +64,22 @@ class HomeController extends Controller
         'content' => $request->content,
       ]);
 
-      return redirect()->route('home');
+      return redirect()->route('post.user')->with('message','Resep berhasil diedit');
+    }
+
+
+    public function destroy($id){
+      $post = Post::find($id);
+
+      $post->delete();
+
+      return redirect()->route('post.user')->with('message','Resep berhasil dihapus');
+    }
+
+    public function postUser(){
+      $posts = Post::where('user_id',Auth::user()->id)->orderBy('id','DESC')->paginate(3);
+
+      return view('postUser', compact('posts'));
     }
 
 
