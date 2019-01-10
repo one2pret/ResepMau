@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Tambah Resep
+                <div class="card-header">Edit Resep
                   </div>
                   <form class="" action="{{route('update',$post)}}" method="post">
                     @csrf
