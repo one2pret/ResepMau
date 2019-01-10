@@ -64,7 +64,7 @@ class HomeController extends Controller
         'content' => $request->content,
       ]);
 
-      return redirect()->route('post.user')->with('message','Resep berhasil diedit');
+      return redirect()->route('post.user')->with('message','Resep berhasil diubah');
     }
 
 

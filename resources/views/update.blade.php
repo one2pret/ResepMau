@@ -32,7 +32,7 @@
                 </div>
                 <div class="card-footer">
                   <div class="text-center">
-                    <input type="submit" value="edit" name="edit" class="btn btn-primary btn-lg">
+                    <input type="submit" value="Edit" name="edit" class="btn btn-primary btn-lg">
                   </div>
                 </div>
                 </form>
