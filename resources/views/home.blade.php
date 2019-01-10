@@ -10,8 +10,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{$post->title}}
-                  <a href="" class="float-right btn btn-danger">Hapus</a>
-                  <a href="{{route('edit',$post)}}" class="float-right btn btn-warning" style="margin-right:10px">Edit</a>
+                  <!-- <a href="" class="float-right btn btn-danger">Hapus</a>
+                  <a href="{{route('edit',$post)}}" class="float-right btn btn-warning" style="margin-right:10px">Edit</a> -->
                  </div>
                 <div class="card-body">
                     <p>{{$post->content}}</p>

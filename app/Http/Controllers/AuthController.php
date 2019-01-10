@@ -11,11 +11,11 @@ class AuthController extends Controller
   public function show(){
     $users = User::all();
 
-    return fractal()
-      ->collection($users)
-      ->transformWith(new UserTransformer)
-      ->toArray();
-    // return response()->json($users);
+    // return fractal()
+    //   ->collection($users)
+    //   ->transformWith(new UserTransformer)
+    //   ->toArray();
+     return response()->json($users);
   }
 
     public function register(Request $request,User $user){
@@ -32,31 +32,39 @@ class AuthController extends Controller
         'api_token' => bcrypt($request->email),
       ]);
 
-      $response = fractal()
-            ->item($user)
-            ->transformWith(new UserTransformer)
-            ->toArray();
-      return response()->json([
+      // $response = fractal()
+      //       ->item($user)
+      //       ->transformWith(new UserTransformer)
+      //       ->toArray();
+      // return response()->json($response, 201);
 
-        'message' => 'register success',
-        'status' => 'true'], 201);
+      return [
+        'success' => 'register successful',
+        'status'  => '1',
+        'data' => $user
+      ];
     }
 
     public function login(Request $request, User $user){
       if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
         return response()->json([
-          'error' => 'Login Failed',
-          'status' => 'false'],401);
+          'message' => 'Login Failed',
+          'status' => '0'],401);
       }
 
       $user = $user->find(Auth::user()->id);
-      $response = fractal()
-      ->item($user)
-      ->transformWith(new UserTransformer)
-      ->toArray();
+      // $response = fractal()
+      // ->item($user)
+      // ->transformWith(new UserTransformer)
+      // ->toArray();
 
-      return response()->json([
-        'message' => 'login successful',
-        'status' => 'true'], 200);
+      // return response()->json($response, 200);
+
+
+      return [
+        'success' => 'login successful',
+        'status'  => '1',
+        'data' => $user
+      ];
     }
 }
