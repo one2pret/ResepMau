@@ -44,7 +44,8 @@ class PostController extends Controller
       //   ->toArray();
 
         return response()->json([
-          'Message' => 'Post Created'
+          'message' => 'Post Created',
+          'status' => '1'
         ], 201);
     }
 
@@ -57,7 +58,8 @@ class PostController extends Controller
       ]);
 
       return response()->json([
-        'Message' => 'Post Updated'
+        'message' => 'Post Updated',
+        'status' => '1'
       ], 201);
     }
 
@@ -66,7 +68,8 @@ class PostController extends Controller
 
       return response()->json([
         'Message' => 'Post Deleted',
-      ]);
+        'status' => '1'
+      ],200);
     }
 
     public function getPostUser(){
