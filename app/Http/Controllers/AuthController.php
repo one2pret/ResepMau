@@ -15,7 +15,6 @@ class AuthController extends Controller
       ->collection($users)
       ->transformWith(new UserTransformer)
       ->toArray();
-
     // return response()->json($users);
   }
 
@@ -37,12 +36,17 @@ class AuthController extends Controller
             ->item($user)
             ->transformWith(new UserTransformer)
             ->toArray();
-      return response()->json($response, 201);
+      return response()->json([
+
+        'message' => 'register success',
+        'status' => 'true'], 201);
     }
 
     public function login(Request $request, User $user){
       if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-        return response()->json(['error' => 'Login Failed'],401);
+        return response()->json([
+          'error' => 'Login Failed',
+          'status' => 'false'],401);
       }
 
       $user = $user->find(Auth::user()->id);
@@ -51,6 +55,8 @@ class AuthController extends Controller
       ->transformWith(new UserTransformer)
       ->toArray();
 
-      return response()->json($response, 200);
+      return response()->json([
+        'message' => 'login successful',
+        'status' => 'true'], 200);
     }
 }
