@@ -13,12 +13,16 @@ class PostController extends Controller
     public function show(){
       $posts = Post::orderBy('id','DESC')->get();
 
-      $response = fractal()
-        ->collection($posts)
-        ->transformWith(new PostTransformer)
-        ->toArray();
+      // $response = fractal()
+      //   ->collection($posts)
+      //   ->transformWith(new PostTransformer)
+      //   ->toArray();
 
-      return response()->json($response,200);
+      return [
+        'message' => 'success',
+        'status'  => '1',
+        'data' => $posts
+      ];
 
     }
 
@@ -65,21 +69,29 @@ class PostController extends Controller
       ]);
     }
 
-    // public function getPostUser(){
-    //   $post = Post::where('user_id', Auth::user()->id)->orderBy('id','DESC')->get();
-    //
-    //   $response = fractal()
-    //     ->item($post)
-    //     ->transformWith(new PostTransformer)
-    //     ->toArray();
-    //
-    //   return response()->json($response, 200);
-    // }
+    public function getPostUser(){
+      $post = Post::where('user_id', Auth::user()->id)->orderBy('id','DESC')->get();
+
+      // $response = fractal()
+      //   ->item($post)
+      //   ->transformWith(new PostTransformer)
+      //   ->toArray();
+
+      return [
+        'message' => 'success',
+        'status'  => '1',
+        'data' => $post
+      ];
+    }
 
     public function postDetails($id){
       $post = Post::find($id);
 
-      return response()->json($post,200);
+      return [
+        'message' => 'success',
+        'status'  => '1',
+        'data' => $post
+      ];
     }
 
 
